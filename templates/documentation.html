@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+		<style>
+			pre {
+				cursor: pointer;
+				background-color: #6F3EFB;
+				color: white;
+
+				padding:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<br>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col">
+					<h1>Документация</h1>
+					<span>Данные отправляются двумя основными способами: JSON (header "content-type": "application/json")</span>
+					<br>
+					<span>Либо файл в POST данных в HTML форме (formdata)</span>
+					<br>
+					<span>Для авторизации запросов используйте ключ в заголовке "X-Token" <pre>7zj1jSzRnl321BVM3EJX4dXTEsfIey7P</pre></span>
+				</div>
+			</div>
+			<br><br>
+			<div class="row">
+				<div class="col">
+					<table class="table table-reponsive">
+						<thead>
+							<tr>
+								<th>ENDPOINT</th>
+								<th style="max-width: 300px;">Описание</th>
+								<th>Метод</th>
+								<th>Параметры</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><pre>/api/version/</pre></td>
+								<td>Используется для автоматического получения версии API. Каждая новая версия обратно совместима.</td>
+								<td><pre>GET</pre></td>
+								<td><pre>Параметров нет</pre></td>
+							</tr>
+							<tr>
+								<td><pre>/api/upload/<file_name></pre></td>
+								<td>Загрузка файлов с данными для аналитики</td>
+								<td><pre>POST</pre></td>
+								<td><pre>type - тип загружаемых данных<br>data - файл с данными<br>file_name - тип данных. Доступные типы - ['cost_data', 'shipping_data_fact', 'shipping_data_plan']</pre></td>
+							</tr>
+							<tr>
+								<td><pre>/api/dashboard/</pre></td>
+								<td>Сводная статистика и метрики по загруженным данным</td>
+								<td><pre>GET</pre></td>
+								<td><pre>Параметров нет</pre></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

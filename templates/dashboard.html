@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Сводка</title>
+  <link rel="stylesheet" href="/static/bootstrap1.min.css">
+  <link rel="stylesheet" href="/static/themify-icons.css">
+  <link rel="stylesheet" href="/static/nice-select.css">
+  <link rel="stylesheet" href="/static/owl.carousel.css">
+  <link rel="stylesheet" href="/static/gijgo.min.css">
+  <link rel="stylesheet" href="/static/all.min.css">
+  <link rel="stylesheet" href="/static/tagsinput.css">
+  <link rel="stylesheet" href="/static/date-picker.css">
+  <link rel="stylesheet" href="/static/vectormap-2.0.2.css">
+  <link rel="stylesheet" href="/static/scrollable.css">
+  <link rel="stylesheet" href="/static/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="/static/responsive.dataTables.min.css">
+  <link rel="stylesheet" href="/static/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="/static/summernote-bs4.css">
+  <link rel="stylesheet" href="/static/morris.css">
+  <link rel="stylesheet" href="/static/material-icons.css">
+  <link rel="stylesheet" href="/static/metisMenu.css">
+  <link rel="stylesheet" href="/static/style1.css">
+  <link rel="stylesheet" href="/static/default.css" id="colorSkinCSS">
+
+  <link rel="stylesheet" href="https://libs.cdnjs.net/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.48.0/apexcharts.min.js" integrity="sha512-wqcdhB5VcHuNzKcjnxN9wI5tB3nNorVX7Zz9NtKBxmofNskRC29uaQDnv71I/zhCDLZsNrg75oG8cJHuBvKWGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <style type="text/css">
+  .apexcharts-canvas {
+    position: relative;
+    user-select: none;
+    /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
+  }
+  /* scrollbar is not visible by default for legend, hence forcing the visibility */
+  
+  .apexcharts-canvas::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 6px;
+  }
+  
+  .apexcharts-canvas::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+  
+  .apexcharts-canvas.dark {
+    background: #343F57;
+  }
+  
+  .apexcharts-inner {
+    position: relative;
+  }
+  
+  .legend-mouseover-inactive {
+    transition: 0.15s ease all;
+    opacity: 0.20;
+  }
+  
+  .apexcharts-series-collapsed {
+    opacity: 0;
+  }
+  
+  .apexcharts-gridline,
+  .apexcharts-text {
+    pointer-events: none;
+  }
+  
+  .apexcharts-tooltip {
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px -4px #999;
+    cursor: default;
+    font-size: 14px;
+    left: 62px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 12;
+    transition: 0.15s ease all;
+  }
+  
+  .apexcharts-tooltip.light {
+    border: 1px solid #e3e3e3;
+    background: rgba(255, 255, 255, 0.96);
+  }
+  
+  .apexcharts-tooltip.dark {
+    color: #fff;
+    background: rgba(30, 30, 30, 0.8);
+  }
+  
+  .apexcharts-tooltip * {
+    font-family: inherit;
+  }
+  
+  .apexcharts-tooltip .apexcharts-marker,
+  .apexcharts-area-series .apexcharts-area,
+  .apexcharts-line {
+    pointer-events: none;
+  }
+  
+  .apexcharts-tooltip.active {
+    opacity: 1;
+    transition: 0.15s ease all;
+  }
+  
+  .apexcharts-tooltip-title {
+    padding: 6px;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  
+  .apexcharts-tooltip.light .apexcharts-tooltip-title {
+    background: #ECEFF1;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .apexcharts-tooltip.dark .apexcharts-tooltip-title {
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid #333;
+  }
+  
+  .apexcharts-tooltip-text-value,
+  .apexcharts-tooltip-text-z-value {
+    display: inline-block;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+  
+  .apexcharts-tooltip-text-z-label:empty,
+  .apexcharts-tooltip-text-z-value:empty {
+    display: none;
+  }
+  
+  .apexcharts-tooltip-text-value,
+  .apexcharts-tooltip-text-z-value {
+    font-weight: 600;
+  }
+  
+  .apexcharts-tooltip-marker {
+    width: 12px;
+    height: 12px;
+    position: relative;
+    top: 0px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  
+  .apexcharts-tooltip-series-group {
+    padding: 0 10px;
+    display: none;
+    text-align: left;
+    justify-content: left;
+    align-items: center;
+  }
+  
+  .apexcharts-tooltip-series-group.active .apexcharts-tooltip-marker {
+    opacity: 1;
+  }
+  
+  .apexcharts-tooltip-series-group.active,
+  .apexcharts-tooltip-series-group:last-child {
+    padding-bottom: 4px;
+  }
+  
+  .apexcharts-tooltip-series-group-hidden {
+    opacity: 0;
+    height: 0;
+    line-height: 0;
+    padding: 0 !important;
+  }
+  
+  .apexcharts-tooltip-y-group {
+    padding: 6px 0 5px;
+  }
+  
+  .apexcharts-tooltip-candlestick {
+    padding: 4px 8px;
+  }
+  
+  .apexcharts-tooltip-candlestick > div {
+    margin: 4px 0;
+  }
+  
+  .apexcharts-tooltip-candlestick span.value {
+    font-weight: bold;
+  }
+  
+  .apexcharts-tooltip-rangebar {
+    padding: 5px 8px;
+  }
+  
+  .apexcharts-tooltip-rangebar .category {
+    font-weight: 600;
+    color: #777;
+  }
+  
+  .apexcharts-tooltip-rangebar .series-name {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .apexcharts-xaxistooltip {
+    opacity: 0;
+    padding: 9px 10px;
+    pointer-events: none;
+    color: #373d3f;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    background: #ECEFF1;
+    border: 1px solid #90A4AE;
+    transition: 0.15s ease all;
+  }
+  
+  .apexcharts-xaxistooltip.dark {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  
+  .apexcharts-xaxistooltip:after,
+  .apexcharts-xaxistooltip:before {
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  
+  .apexcharts-xaxistooltip:after {
+    border-color: rgba(236, 239, 241, 0);
+    border-width: 6px;
+    margin-left: -6px;
+  }
+  
+  .apexcharts-xaxistooltip:before {
+    border-color: rgba(144, 164, 174, 0);
+    border-width: 7px;
+    margin-left: -7px;
+  }
+  
+  .apexcharts-xaxistooltip-bottom:after,
+  .apexcharts-xaxistooltip-bottom:before {
+    bottom: 100%;
+  }
+  
+  .apexcharts-xaxistooltip-top:after,
+  .apexcharts-xaxistooltip-top:before {
+    top: 100%;
+  }
+  
+  .apexcharts-xaxistooltip-bottom:after {
+    border-bottom-color: #ECEFF1;
+  }
+  
+  .apexcharts-xaxistooltip-bottom:before {
+    border-bottom-color: #90A4AE;
+  }
+  
+  .apexcharts-xaxistooltip-bottom.dark:after {
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-xaxistooltip-bottom.dark:before {
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-xaxistooltip-top:after {
+    border-top-color: #ECEFF1
+  }
+  
+  .apexcharts-xaxistooltip-top:before {
+    border-top-color: #90A4AE;
+  }
+  
+  .apexcharts-xaxistooltip-top.dark:after {
+    border-top-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-xaxistooltip-top.dark:before {
+    border-top-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-xaxistooltip.active {
+    opacity: 1;
+    transition: 0.15s ease all;
+  }
+  
+  .apexcharts-yaxistooltip {
+    opacity: 0;
+    padding: 4px 10px;
+    pointer-events: none;
+    color: #373d3f;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    background: #ECEFF1;
+    border: 1px solid #90A4AE;
+  }
+  
+  .apexcharts-yaxistooltip.dark {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  
+  .apexcharts-yaxistooltip:after,
+  .apexcharts-yaxistooltip:before {
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  
+  .apexcharts-yaxistooltip:after {
+    border-color: rgba(236, 239, 241, 0);
+    border-width: 6px;
+    margin-top: -6px;
+  }
+  
+  .apexcharts-yaxistooltip:before {
+    border-color: rgba(144, 164, 174, 0);
+    border-width: 7px;
+    margin-top: -7px;
+  }
+  
+  .apexcharts-yaxistooltip-left:after,
+  .apexcharts-yaxistooltip-left:before {
+    left: 100%;
+  }
+  
+  .apexcharts-yaxistooltip-right:after,
+  .apexcharts-yaxistooltip-right:before {
+    right: 100%;
+  }
+  
+  .apexcharts-yaxistooltip-left:after {
+    border-left-color: #ECEFF1;
+  }
+  
+  .apexcharts-yaxistooltip-left:before {
+    border-left-color: #90A4AE;
+  }
+  
+  .apexcharts-yaxistooltip-left.dark:after {
+    border-left-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-yaxistooltip-left.dark:before {
+    border-left-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-yaxistooltip-right:after {
+    border-right-color: #ECEFF1;
+  }
+  
+  .apexcharts-yaxistooltip-right:before {
+    border-right-color: #90A4AE;
+  }
+  
+  .apexcharts-yaxistooltip-right.dark:after {
+    border-right-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-yaxistooltip-right.dark:before {
+    border-right-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .apexcharts-yaxistooltip.active {
+    opacity: 1;
+  }
+  
+  .apexcharts-yaxistooltip-hidden {
+    display: none;
+  }
+  
+  .apexcharts-xcrosshairs,
+  .apexcharts-ycrosshairs {
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.15s ease all;
+  }
+  
+  .apexcharts-xcrosshairs.active,
+  .apexcharts-ycrosshairs.active {
+    opacity: 1;
+    transition: 0.15s ease all;
+  }
+  
+  .apexcharts-ycrosshairs-hidden {
+    opacity: 0;
+  }
+  
+  .apexcharts-zoom-rect {
+    pointer-events: none;
+  }
+  
+  .apexcharts-selection-rect {
+    cursor: move;
+  }
+  
+  .svg_select_points,
+  .svg_select_points_rot {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .svg_select_points_l,
+  .svg_select_points_r {
+    cursor: ew-resize;
+    opacity: 1;
+    visibility: visible;
+    fill: #888;
+  }
+  
+  .apexcharts-canvas.zoomable .hovering-zoom {
+    cursor: crosshair
+  }
+  
+  .apexcharts-canvas.zoomable .hovering-pan {
+    cursor: move
+  }
+  
+  .apexcharts-xaxis,
+  .apexcharts-yaxis {
+    pointer-events: none;
+  }
+  
+  .apexcharts-zoom-icon,
+  .apexcharts-zoom-in-icon,
+  .apexcharts-zoom-out-icon,
+  .apexcharts-reset-zoom-icon,
+  .apexcharts-pan-icon,
+  .apexcharts-selection-icon,
+  .apexcharts-menu-icon,
+  .apexcharts-toolbar-custom-icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    line-height: 24px;
+    color: #6E8192;
+    text-align: center;
+  }
+  
+  .apexcharts-zoom-icon svg,
+  .apexcharts-zoom-in-icon svg,
+  .apexcharts-zoom-out-icon svg,
+  .apexcharts-reset-zoom-icon svg,
+  .apexcharts-menu-icon svg {
+    fill: #6E8192;
+  }
+  
+  .apexcharts-selection-icon svg {
+    fill: #444;
+    transform: scale(0.76)
+  }
+  
+  .dark .apexcharts-zoom-icon svg,
+  .dark .apexcharts-zoom-in-icon svg,
+  .dark .apexcharts-zoom-out-icon svg,
+  .dark .apexcharts-reset-zoom-icon svg,
+  .dark .apexcharts-pan-icon svg,
+  .dark .apexcharts-selection-icon svg,
+  .dark .apexcharts-menu-icon svg,
+  .dark .apexcharts-toolbar-custom-icon svg {
+    fill: #f3f4f5;
+  }
+  
+  .apexcharts-canvas .apexcharts-zoom-icon.selected svg,
+  .apexcharts-canvas .apexcharts-selection-icon.selected svg,
+  .apexcharts-canvas .apexcharts-reset-zoom-icon.selected svg {
+    fill: #008FFB;
+  }
+  
+  .light .apexcharts-selection-icon:not(.selected):hover svg,
+  .light .apexcharts-zoom-icon:not(.selected):hover svg,
+  .light .apexcharts-zoom-in-icon:hover svg,
+  .light .apexcharts-zoom-out-icon:hover svg,
+  .light .apexcharts-reset-zoom-icon:hover svg,
+  .light .apexcharts-menu-icon:hover svg {
+    fill: #333;
+  }
+  
+  .apexcharts-selection-icon,
+  .apexcharts-menu-icon {
+    position: relative;
+  }
+  
+  .apexcharts-reset-zoom-icon {
+    margin-left: 5px;
+  }
+  
+  .apexcharts-zoom-icon,
+  .apexcharts-reset-zoom-icon,
+  .apexcharts-menu-icon {
+    transform: scale(0.85);
+  }
+  
+  .apexcharts-zoom-in-icon,
+  .apexcharts-zoom-out-icon {
+    transform: scale(0.7)
+  }
+  
+  .apexcharts-zoom-out-icon {
+    margin-right: 3px;
+  }
+  
+  .apexcharts-pan-icon {
+    transform: scale(0.62);
+    position: relative;
+    left: 1px;
+    top: 0px;
+  }
+  
+  .apexcharts-pan-icon svg {
+    fill: #fff;
+    stroke: #6E8192;
+    stroke-width: 2;
+  }
+  
+  .apexcharts-pan-icon.selected svg {
+    stroke: #008FFB;
+  }
+  
+  .apexcharts-pan-icon:not(.selected):hover svg {
+    stroke: #333;
+  }
+  
+  .apexcharts-toolbar {
+    position: absolute;
+    z-index: 11;
+    top: 0px;
+    right: 3px;
+    max-width: 176px;
+    text-align: right;
+    border-radius: 3px;
+    padding: 0px 6px 2px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .apexcharts-toolbar svg {
+    pointer-events: none;
+  }
+  
+  .apexcharts-menu {
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 3px;
+    right: 10px;
+    opacity: 0;
+    min-width: 110px;
+    transition: 0.15s ease all;
+    pointer-events: none;
+  }
+  
+  .apexcharts-menu.open {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.15s ease all;
+  }
+  
+  .apexcharts-menu-item {
+    padding: 6px 7px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .light .apexcharts-menu-item:hover {
+    background: #eee;
+  }
+  
+  .dark .apexcharts-menu {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .apexcharts-toolbar {
+      /*opacity: 0;*/
+    }
+    .apexcharts-canvas:hover .apexcharts-toolbar {
+      opacity: 1;
+    }
+  }
+  
+  .apexcharts-datalabel.hidden {
+    opacity: 0;
+  }
+  
+  .apexcharts-pie-label,
+  .apexcharts-datalabel,
+  .apexcharts-datalabel-label,
+  .apexcharts-datalabel-value {
+    cursor: default;
+    pointer-events: none;
+  }
+  
+  .apexcharts-pie-label-delay {
+    opacity: 0;
+    animation-name: opaque;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+  }
+  
+  .apexcharts-canvas .hidden {
+    opacity: 0;
+  }
+  
+  .apexcharts-hide .apexcharts-series-points {
+    opacity: 0;
+  }
+  
+  .apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+  .apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+  .apexcharts-radar-series path,
+  .apexcharts-radar-series polygon {
+    pointer-events: none;
+  }
+  /* markers */
+  
+  .apexcharts-marker {
+    transition: 0.15s ease all;
+  }
+  
+  @keyframes opaque {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  /* Resize generated styles */
+  
+  @keyframes resizeanim {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .resize-triggers {
+    animation: 1ms resizeanim;
+    visibility: hidden;
+    opacity: 0;
+  }
+  
+  .resize-triggers,
+  .resize-triggers > div,
+  .contract-trigger:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .resize-triggers > div {
+    background: #eee;
+    overflow: auto;
+  }
+  
+  .contract-trigger:before {
+    width: 200%;
+    height: 200%;
+  }
+  </style>
+  <style type="text/css">
+  /* Chart.js */
+  
+  @keyframes chartjs-render-animation {
+    from {
+      opacity: .99
+    }
+    to {
+      opacity: 1
+    }
+  }
+  
+  .chartjs-render-monitor {
+    animation: chartjs-render-animation 1ms
+  }
+  
+  .chartjs-size-monitor,
+  .chartjs-size-monitor-expand,
+  .chartjs-size-monitor-shrink {
+    position: absolute;
+    direction: ltr;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: -1
+  }
+  
+  .chartjs-size-monitor-expand>div {
+    position: absolute;
+    width: 1000000px;
+    height: 1000000px;
+    left: 0;
+    top: 0
+  }
+  
+  .chartjs-size-monitor-shrink>div {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: 0;
+    top: 0
+  }
+  </style>
+</head>
+
+<body class="crm_body_bg">
+  <section class="main_content dashboard_part large_header_bg">
+    <div class="container-fluid g-0">
+      <div class="main_content_iner overly_inner ">
+        <div class="container-fluid p-0 ">
+          <div class="row">
+            <div class="col-12">
+              <div class="page_title_box d-flex align-items-center justify-content-between">
+                <div class="page_title_left">
+                  <h3 class="f_s_30 f_w_700 text_white">Сводка</h3>
+                  <ol class="breadcrumb page_bradcam mb-0">
+                    <li class="breadcrumb-item">Сводка</li>
+                    <li class="breadcrumb-item">Финансовые показатели</li>
+                    <li class="breadcrumb-item active">Общая сводка</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-lg-8 card_height_100">
+              <div class="white_card mb_20">
+                <div class="white_card_header">
+                  <div class="box_header m-0">
+                    <div class="main-title">
+                      <h3 class="m-0">Выручка</h3> </div>
+                    <div class="float-lg-right float-none sales_renew_btns justify-content-end">
+                      <ul class="nav">
+                        <!-- <li class="nav-item"> <a class="nav-link {% if request.args.get("revenue") == "day" %}active{% endif %}" href="#" onclick="toggle_url({'revenue' : 'day'}); return false;">По дням</a> </li>
+                        <li class="nav-item"> <a class="nav-link {% if request.args.get("revenue") == "week" %}active{% endif %}" href="#" onclick="toggle_url({'revenue' : 'week'}); return false;">По неделям</a> </li> -->
+                        <li class="nav-item"><a class="nav-link active" href="#" onclick="return false;">По месяцам</a> </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="white_card_body" style="height: 286px;">
+                  <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                      <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                      <div class=""></div>
+                    </div>
+                  </div>
+                  <canvas id="bar" style="display: block; height: 251px; width: 667px;" width="1334" height="502" class="chartjs-render-monitor"></canvas>
+                </div>
+              </div>
+              <!--  -->
+              <div class="white_card mb_20">
+                <div class="white_card_body renew_report_card d-flex align-items-center justify-content-between flex-wrap">
+                  <div class="renew_report_left">
+                    <h4 class="f_s_19 f_w_600 color_theme2 mb-0">Боту можно задать обычный человеческий вопрос</h4>
+                    <p class="color_gray2 f_s_12 f_w_600">Он может выдать как текстовую информацию, так и ссылку на график</p>
+                  </div>
+                  <div class="create_report_btn"> <a href="https://t.me/demetrajarvis_bot" target="_blank" class="btn_1 mt-1 mb-1">Перейти в телеграм</a> </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 card_height_100 mb_20">
+              <div class="white_card">
+                <div class="white_card_header">
+                  <div class="box_header m-0">
+                    <div class="main-title">
+                      <h3 class="m-0">Выручка по культурам</h3> </div>
+                    <i class="fa-solid fa-chart-pie"></i>
+                  </div>
+                </div>
+                <div class="white_card_body p-0">
+                  <div class="card_container">
+                    <div id="platform_type_dates_donut" style="height: 280px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1713472665684">
+                      <div style="position: relative; overflow: hidden; width: 311px; height: 280px; padding: 0px; margin: 0px; border-width: 0px;">
+                        <canvas data-zr-dom-id="zr_0" width="622" height="560" style="position: absolute; left: 0px; top: 0px; width: 311px; height: 280px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sales_unit_footer d-flex justify-content-between">
+                <div class="single_sales">
+                  <p>Соя (этот месяц)</p>
+                  <h3>{{ revenue_soya_this_month }}кк ₽</h3>
+                </div>
+                <div class="single_sales disable_sales">
+                  <p>Кукуруза (этот месяц)</p>
+                  <h3>{{ revenue_kukuruza_this_month }}кк ₽</h3>
+                </div>
+                <div class="single_sales disable_sales">
+                  <p>Ячмень (этот месяц)</p>
+                  <h3>{{ revenue_yachmen_this_month }}кк ₽</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="white_card card_height_100 mb_20">
+                <div class="white_card_header">
+                  <div class="box_header m-0">
+                    <div class="main-title">
+                      <h3 class="m-0">Доставлено грузов</h3> </div>
+                    <i class="fa-solid fa-chart-pie"></i>
+                  </div>
+                </div>
+                <div class="white_card_body" style="position: relative;">
+                  <div id="chart-currently" style="min-height: 105px;">
+                  </div>
+                  <div class="resize-triggers">
+                    <div class="expand-trigger">
+                      <div style="width: 352px; height: 141px;"></div>
+                    </div>
+                    <div class="contract-trigger"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <!-- <div class="col-lg-4">
+              <div class="white_card card_height_100 mb_20">
+                <div class="white_card_header">
+                  <div class="box_header m-0">
+                    <div class="main-title">
+                      <h3 class="m-0">Грузов</h3> </div>
+                    <div class="float-lg-right float-none sales_renew_btns justify-content-end">
+                      <ul class="nav">
+                        <li class="nav-item"> <a class="nav-link active" href="https://demo.dashboardpack.com/sales-html/#">Сегодня</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="https://demo.dashboardpack.com/sales-html/#">Неделя</a> </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="white_card_body d-flex align-items-center" style="height:140px">
+                  <h4 class="f_w_900 f_s_60 mb-0 me-2">356</h4>
+                  <div class="w-100" style="height:100px">
+                    <div class="chartjs-size-monitor">
+                      <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                      </div>
+                      <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                      </div>
+                    </div>
+                    <canvas width="350" id="page_views" height="200" style="display: block; height: 100px; width: 175px;" class="chartjs-render-monitor"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+  </section>
+  <div class="CHAT_MESSAGE_POPUPBOX">
+    <div class="CHAT_POPUP_HEADER">
+      <div class="MSEESAGE_CHATBOX_CLOSE">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.09939 5.98831L11.772 10.661C12.076 10.965 12.076 11.4564 11.772 11.7603C11.468 12.0643 10.9766 12.0643 10.6726 11.7603L5.99994 7.08762L1.32737 11.7603C1.02329 12.0643 0.532002 12.0643 0.228062 11.7603C-0.0760207 11.4564 -0.0760207 10.965 0.228062 10.661L4.90063 5.98831L0.228062 1.3156C-0.0760207 1.01166 -0.0760207 0.520226 0.228062 0.216286C0.379534 0.0646715 0.578697 -0.0114918 0.777717 -0.0114918C0.976738 -0.0114918 1.17576 0.0646715 1.32737 0.216286L5.99994 4.889L10.6726 0.216286C10.8243 0.0646715 11.0233 -0.0114918 11.2223 -0.0114918C11.4213 -0.0114918 11.6203 0.0646715 11.772 0.216286C12.076 0.520226 12.076 1.01166 11.772 1.3156L7.09939 5.98831Z" fill="white"></path>
+        </svg>
+      </div>
+      <h3>Chat with us</h3>
+      <div class="Chat_Listed_member">
+        <ul>
+          <li>
+            <a href="https://demo.dashboardpack.com/sales-html/#">
+              <div class="member_thumb"> <img src="/static/1(2).png" alt=""> </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://demo.dashboardpack.com/sales-html/#">
+              <div class="member_thumb"> <img src="/static/2.png" alt=""> </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://demo.dashboardpack.com/sales-html/#">
+              <div class="member_thumb"> <img src="/static/3.png" alt=""> </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://demo.dashboardpack.com/sales-html/#">
+              <div class="member_thumb"> <img src="/static/4.png" alt=""> </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://demo.dashboardpack.com/sales-html/#">
+              <div class="member_thumb"> <img src="/static/5(1).png" alt=""> </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://demo.dashboardpack.com/sales-html/#">
+              <div class="member_thumb">
+                <div class="more_member_count"> <span>90+</span> </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="CHAT_POPUP_BODY">
+      <p class="mesaged_send_date"> Sunday, 12 January </p>
+      <div class="CHATING_SENDER">
+        <div class="SMS_thumb"> <img src="/static/1(2).png" alt=""> </div>
+        <div class="SEND_SMS_VIEW">
+          <p>Hi! Welcome . How can I help you?</p>
+        </div>
+      </div>
+      <div class="CHATING_SENDER CHATING_RECEIVEr">
+        <div class="SEND_SMS_VIEW">
+          <p>Hello</p>
+        </div>
+        <div class="SMS_thumb"> <img src="/static/1(2).png" alt=""> </div>
+      </div>
+    </div>
+    <div class="CHAT_POPUP_BOTTOM">
+      <div class="chat_input_box d-flex align-items-center">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Write your message" aria-label="Recipient&#39;s username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn " type="button">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.7821 3.21895C14.4908 -1.07281 7.50882 -1.07281 3.2183 3.21792C-1.07304 7.50864 -1.07263 14.4908 3.21872 18.7824C7.50882 23.0729 14.4908 23.0729 18.7817 18.7815C23.0726 14.4908 23.0724 7.50906 18.7821 3.21895ZM17.5813 17.5815C13.9525 21.2103 8.04773 21.2108 4.41871 17.5819C0.78907 13.9525 0.789485 8.04714 4.41871 4.41832C8.04752 0.789719 13.9521 0.789304 17.5817 4.41874C21.2105 8.04755 21.2101 13.9529 17.5813 17.5815ZM6.89503 8.02162C6.89503 7.31138 7.47107 6.73534 8.18131 6.73534C8.89135 6.73534 9.46739 7.31117 9.46739 8.02162C9.46739 8.73228 8.89135 9.30811 8.18131 9.30811C7.47107 9.30811 6.89503 8.73228 6.89503 8.02162ZM12.7274 8.02162C12.7274 7.31138 13.3038 6.73534 14.0141 6.73534C14.7241 6.73534 15.3002 7.31117 15.3002 8.02162C15.3002 8.73228 14.7243 9.30811 14.0141 9.30811C13.3038 9.30811 12.7274 8.73228 12.7274 8.02162ZM15.7683 13.2898C14.9712 15.1332 13.1043 16.3243 11.0126 16.3243C8.8758 16.3243 6.99792 15.1272 6.22834 13.2744C6.09642 12.9573 6.24681 12.593 6.56438 12.4611C6.64238 12.4289 6.72328 12.4136 6.80293 12.4136C7.04687 12.4136 7.27836 12.5577 7.37772 12.7973C7.95376 14.1842 9.38048 15.0799 11.0126 15.0799C12.6077 15.0799 14.0261 14.1836 14.626 12.7959C14.7625 12.4804 15.1288 12.335 15.4441 12.4717C15.7594 12.6084 15.9048 12.9745 15.7683 13.2898Z" fill="#707DB7"></path>
+              </svg>
+            </button>
+            <button class="btn" type="button">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 0.289062C4.92455 0.289062 0 5.08402 0 10.9996C0 16.9152 4.92455 21.7101 11 21.7101C17.0755 21.7101 22 16.9145 22 10.9996C22 5.08472 17.0755 0.289062 11 0.289062ZM11 20.3713C5.68423 20.3713 1.375 16.1755 1.375 10.9996C1.375 5.82371 5.68423 1.62788 11 1.62788C16.3158 1.62788 20.625 5.82371 20.625 10.9996C20.625 16.1755 16.3158 20.3713 11 20.3713ZM15.125 10.3302H11.6875V6.98314C11.6875 6.61363 11.3795 6.31373 11 6.31373C10.6205 6.31373 10.3125 6.61363 10.3125 6.98314V10.3302H6.875C6.4955 10.3302 6.1875 10.6301 6.1875 10.9996C6.1875 11.3691 6.4955 11.669 6.875 11.669H10.3125V15.016C10.3125 15.3855 10.6205 15.6854 11 15.6854C11.3795 15.6854 11.6875 15.3855 11.6875 15.016V11.669H15.125C15.5045 11.669 15.8125 11.3691 15.8125 10.9996C15.8125 10.6301 15.5045 10.3302 15.125 10.3302Z" fill="#707DB7"></path>
+              </svg>
+              <input type="file"> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/jquery1-3.4.1.min.js"></script>
+  <script src="/static/popper1.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+  <script src="/static/metisMenu.js"></script>
+  <script src="/static/jquery.waypoints.min.js"></script>
+  <script src="/static/Chart.min.js"></script>
+  <script src="/static/jquery.counterup.min.js"></script>
+  <script src="/static/jquery.nice-select.min.js"></script>
+  <script src="/static/owl.carousel.min.js"></script>
+  <script src="/static/jquery.dataTables.min.js"></script>
+  <script src="/static/dataTables.responsive.min.js"></script>
+  <script src="/static/dataTables.buttons.min.js"></script>
+  <script src="/static/buttons.flash.min.js"></script>
+  <script src="/static/jszip.min.js"></script>
+  <script src="/static/pdfmake.min.js"></script>
+  <script src="/static/vfs_fonts.js"></script>
+  <script src="/static/buttons.html5.min.js"></script>
+  <script src="/static/buttons.print.min.js"></script>
+  <script src="/static/datepicker.js"></script>
+  <script src="/static/datepicker.en.js"></script>
+  <script src="/static/datepicker.custom.js"></script>
+  <script src="/static/Chart(1).min.js"></script>
+  <script src="/static/roundedBar.min.js"></script>
+  <script src="/static/jquery.barfiller.js"></script>
+  <script src="/static/tagsinput.js"></script>
+  <script src="/static/summernote-bs4.js"></script>
+  <script src="/static/amcharts.js"></script>
+  <script src="/static/perfect-scrollbar.min.js"></script>
+  <script src="/static/scrollable-custom.js"></script>
+  <script src="/static/vectormap-2.0.2.min.js"></script>
+  <script src="/static/vectormap-world-mill-en.js"></script>
+  <script src="/static/apex-chart2.js"></script>
+  <script src="/static/apex_dashboard.js"></script>
+  <script src="/static/echarts.min.js"></script>
+  <script src="/static/core.js"></script>
+  <svg id="SvgjsSvg1106" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
+    <defs id="SvgjsDefs1107"></defs>
+    <polyline id="SvgjsPolyline1108" points="0,0"></polyline>
+    <path id="SvgjsPath1109" d="M-1 20L-1 20C-1 20 24.25 20 24.25 20C24.25 20 48.5 20 48.5 20C48.5 20 72.75 20 72.75 20C72.75 20 97 20 97 20C97 20 121.25 20 121.25 20C121.25 20 145.5 20 145.5 20C145.5 20 169.75 20 169.75 20C169.75 20 194 20 194 20C194 20 218.25 20 218.25 20C218.25 20 242.5 20 242.5 20C242.5 20 266.75 20 266.75 20C266.75 20 291 20 291 20C291 20 291 20 291 20 "></path>
+  </svg>
+  <script src="/static/charts.js"></script>
+  <script src="/static/animated.js"></script>
+  <script src="/static/kelly.js"></script>
+  <script src="/static/chart-custom.js"></script>
+  <script>
+    !(function(a) {
+    "use strict";
+    a(function() {
+        if (a("#bar").length) {
+            var e = a("#bar").get(0).getContext("2d");
+            e.height = 20;
+            new Chart(e, {
+                type: "line",
+                data: {
+                    labels: {{ charts[0]["chart_titles"] | tojson }},
+                    datasets: [{
+                        label: "{{ charts[0]["chart_title"] }}",
+                        backgroundColor: "#1ccab8",
+                        borderColor: "transparent",
+                        borderWidth: 2,
+                        categoryPercentage: 0.5,
+                        hoverBackgroundColor: "#00d8c2",
+                        hoverBorderColor: "transparent",
+                        data: {{ charts[0]["chart_values"] | tojson }},
+                    }, ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: !1,
+                        labels: {
+                            fontColor: "#50649c"
+                        }
+                    },
+                    tooltips: {
+                        enabled: !0,
+                        callbacks: {
+                            label: function(e, a) {
+                                return a.datasets[e.datasetIndex].label + " " + e.yLabel + "";
+                            },
+                        },
+                    },
+                    scales: {
+                        xAxes: [{
+                            barPercentage: 0.35,
+                            categoryPercentage: 0.4,
+                            display: !0,
+                            gridLines: {
+                                color: "transparent",
+                                borderDash: [0],
+                                zeroLineColor: "transparent",
+                                zeroLineBorderDash: [2],
+                                zeroLineBorderDashOffset: [2]
+                            },
+                            ticks: {
+                                fontColor: "#a4abc5",
+                                beginAtZero: !0,
+                                padding: 12
+                            },
+                        }, ],
+                        yAxes: [{
+                            gridLines: {
+                                color: "#8997bd29",
+                                borderDash: [3],
+                                drawBorder: !1,
+                                drawTicks: !1,
+                                zeroLineColor: "#8997bd29",
+                                zeroLineBorderDash: [2],
+                                zeroLineBorderDashOffset: [2]
+                            },
+                            ticks: {
+                                fontColor: "#a4abc5",
+                                beginAtZero: !0,
+                                padding: 12,
+                                callback: function(e) {
+                                    if (!(e % 10)) return "" + e + "";
+                                },
+                            },
+                        }, ],
+                    },
+                },
+            });
+        }
+    });
+})(jQuery), $("#world-map-markers").vectorMap({
+    map: "world_mill_en",
+    scaleColors: ["#eff0f1", "#eff0f1"],
+    normalizeFunction: "polynomial",
+    hoverOpacity: 0.7,
+    hoverColor: !1,
+    regionStyle: {
+        initial: {
+            fill: "#7474b126"
+        }
+    },
+    markers: [{
+        latLng: [55.75, 37.62],
+        name: "Russia"
+    }, {
+        latLng: [-25.27, 133.77],
+        name: "Australia"
+    }, {
+        latLng: [20.59, 78.96],
+        name: "India"
+    }, {
+        latLng: [39.52, -87.12],
+        name: "Brazil"
+    }, ],
+    series: {
+        regions: [{
+            values: {
+                US: "#868ff363",
+                AU: "#868ff363",
+                BR: "#868ff363",
+                RU: "#868ff363"
+            },
+            attribute: "fill"
+        }]
+    },
+    markerStyle: {
+        initial: {
+            stroke: "#7474b126"
+        },
+        hover: {
+            stroke: "rgba(112, 112, 112, 0.30)"
+        }
+    },
+    backgroundColor: "transparent",
+    markers: [{
+        latLng: [37.09024, -95.712891],
+        name: "USA",
+        style: {
+            fill: "#f93b7a"
+        }
+    }, {
+        latLng: [55.754093, 37.620407],
+        name: "Russia",
+        style: {
+            fill: "#0aafff"
+        }
+    }, {
+        latLng: [-21.943369, 123.102198],
+        name: "Australia",
+        style: {
+            fill: "#7551e9"
+        }
+    }, {
+        latLng: [-11.409874, -41.280857],
+        name: "Brazil",
+        style: {
+            fill: "#ffc212"
+        }
+    }, ],
+});
+jQuery(function(e) {
+    "use strict";
+    var o = window.AdminoxAdmin || {};
+    if (e("#platform_type_dates_donut").length) {
+        echarts.init(document.getElementById("platform_type_dates_donut")).setOption({
+            timeline: {
+                show: !1,
+                data: ["06-16", "05-16", "04-16"],
+                label: {
+                    formatter: function(e) {
+                        return e ? e.slice(0, 5) : null;
+                    },
+                },
+                x: 10,
+                y: null,
+                x2: 10,
+                y2: 0,
+                width: 10,
+                height: 50,
+                backgroundColor: "rgba(0,0,0)",
+                borderColor: "#eaeaea",
+                borderWidth: 0,
+                padding: 5,
+                controlPosition: "left",
+                autoPlay: !0,
+                loop: !1,
+                playInterval: 2e3,
+                lineStyle: {
+                    width: 1,
+                    color: "#000",
+                    type: ""
+                },
+            },
+            options: [{
+                color: ["#14256A", "#64c5b1", "#414b4f", "#ee4b82", "#45bbe0"],
+                title: {
+                    text: "",
+                    subtext: ""
+                },
+                tooltip: {
+                    trigger: "item",
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    show: !1,
+                    x: "left",
+                    orient: "vertical",
+                    padding: 0,
+                    data: {{ cargo_types | tojson }}
+                },
+                toolbox: {
+                    show: !0,
+                    color: ["#bdbdbd", "#bdbdbd", "#bdbdbd", "#bdbdbd"],
+                    feature: {
+                        mark: {
+                            show: !1
+                        },
+                        dataView: {
+                            show: !1,
+                            readOnly: !0
+                        },
+                        magicType: {
+                            show: !0,
+                            type: ["pie", "funnel"],
+                            option: {
+                                funnel: {
+                                    x: "10%",
+                                    width: "80%",
+                                    funnelAlign: "center",
+                                    max: 50
+                                },
+                                pie: {
+                                    roseType: "none"
+                                }
+                            }
+                        },
+                        restore: {
+                            show: !1
+                        },
+                        saveAsImage: {
+                            show: 0
+                        },
+                    },
+                },
+                series: [{
+                    name: "06-16",
+                    type: "pie",
+                    radius: [20, "80%"],
+                    roseType: "none",
+                    center: ["50%", "45%"],
+                    width: "40%",
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: !1
+                            },
+                            labelLine: {
+                                show: !0
+                            }
+                        },
+                        emphasis: {
+                            label: {
+                                show: !1
+                            },
+                            labelLine: {
+                                show: !1
+                            }
+                        }
+                    },
+                    data: {{ cargo_chart_data | tojson }},
+                }, ],
+            }, {
+                series: [{
+                    name: "05-16",
+                    type: "pie",
+                    data: {{ cargo_chart_data | tojson }},
+                }, ],
+            }, {
+                series: [{
+                    name: "04-16",
+                    type: "pie",
+                    data: {{ cargo_chart_data | tojson }},
+                }, ],
+            }, ],
+        });
+    }
+    e(window).on("load", function() {});
+})
+!(function(a) {
+    "use strict";
+    if (a("#page_views").length) {
+        var r = a("#page_views").get(0).getContext("2d");
+        new Chart(r, {
+            type: "bar",
+            data: {
+                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                datasets: [{
+                    backgroundColor: ["#E4E9EC", "#E4E9EC", "#E4E9EC", " #64C5B1", "#E4E9EC", "#E4E9EC", "#E4E9EC"],
+                    data: [15, 20, 25, 30, 25, 20, 15]
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: !1
+                },
+                tooltips: {
+                    intersect: !1,
+                    mode: "nearest"
+                },
+                legend: {
+                    display: !1
+                },
+                responsive: !0,
+                maintainAspectRatio: !1,
+                barRadius: 2,
+                scales: {
+                    xAxes: [{
+                        barThickness: 5,
+                        display: !1,
+                        gridLines: !1,
+                        ticks: {
+                            beginAtZero: !0
+                        }
+                    }],
+                    yAxes: [{
+                        display: !1,
+                        gridLines: !1,
+                        ticks: {
+                            beginAtZero: !0
+                        }
+                    }]
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+            },
+        });
+    }
+})(jQuery);
+  </script>
+  <script>
+    function updateURLParameter(url, param, paramVal){
+        var newAdditionalURL = "";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var temp = "";
+        if (additionalURL) {
+            tempArray = additionalURL.split("&");
+            for (var i=0; i<tempArray.length; i++){
+                if(tempArray[i].split('=')[0] != param){
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+
+        var rows_txt = temp + "" + param + "=" + paramVal;
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+    function toggle_url(params, redirect=true, url=false) {
+      if (!url) {
+          url = window.location.href;
+      }
+
+        for (key in params) {
+          url = updateURLParameter(url, key, params[key])
+        }
+
+        if (redirect) {
+          window.location.href = url.replace('#', '');
+        }
+        return url;
+    }
+  </script>
+  <script>
+    $(document).ready(function() {
+      var options = {
+        chart: {
+          type: 'line'
+        },
+        series: [{
+          name: 'Тонны',
+          data: {{ charts[1]["chart_values"] | tojson }}
+        }],
+        xaxis: {
+          categories: {{ charts[1]["chart_titles"] | tojson }}
+        }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart-currently"), options);
+
+        chart.render();
+      });
+  </script>
+  <div class="jvectormap-tip"></div>
+  <script src="/static/custom.js"></script>
+</body>
+
+</html>
